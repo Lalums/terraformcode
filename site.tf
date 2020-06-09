@@ -1,14 +1,15 @@
 # Create a resource group
 resource "azurerm_resource_group" "myresourcegroup" {
-  name     = "${var.resource_group}"
-  location = "${var.location}"
+  name     = var.resource_group
+  location = var.resource_location
 }
 
 # Create virtual network
 resource "azurerm_virtual_network" "myvnet" {
-  name                = "${var.vnetname}"
+  depends_on = [azurerm_resource_group.myresourcegroup]
+  name                = var.vnetname
   address_space       = ["10.1.0.0/16"]
-  location            = "${var.location}"
-  resource_group_name = "${azurerm_resource_group.myresourcegroup.name}"
+  location            = var.resource_location
+  resource_group_name = var.resource_group
 
 }

@@ -1,55 +1,38 @@
 variable "resource_group" {
-  default = "jpa"
+  type = string
+  description = "Name of the Azure Resource Group"
+  default = "jpanew"
 }
 
-variable "location" {
-  default = "North Europe"
+variable "resource_location" {
+  type = string
+  description = "Location of the Azure Resources"
+  default = "eastus"
 }
 
 variable "vnetname" {
   default = "jpa-vnet"
 }
-
-variable "keyvaultnames" {
-  description = "names of all Keyvaults to be created in this environment"
-  type = "list"
-  default = ["jpakv18sd9","jpakv18s454","jpakv18erwe"]
-}
-
-variable "cordanic" {
-  description = "names of all nic to be created in this environment"
-  type = "list"
-  default = ["jpavmnic189","jp8avmnic18","jpavmnic187"]
-}
-
-##### An array if variables holding dns virtual machines ##### 
-variable "dnsvmnames"{
-  description = "values of all dns virtual machine names"
-  type = "list"
-  default = ["jpaser898-VM","operatordns2-VM"]
-}
-
 ##### Define variables for VM Username #####  
 variable "vmuser" {
   default = "bcadmin"
 }
+
 variable "vmpassword" {
   default = "1ON5YFbu6o%z"
 }
 
-variable "pipnames" {
-  type = "list"
-  default = ["jpaserverpip987", "jpaserverpip5656"]
+variable "prefix" {
+  default = "jpa"
 }
 
-# create variable for SQL
-variable "sqlserver" {
-   default = "jpasql9898"
+variable "keyvaultnames" {
+    type    = list
+    default = ["jpakv1", "jpakv2", "jpakv3"]
 }
 
-#create variable for sql DB
-variable "sqldbnames" {
-  type = "list"
-  default = ["jpasqldbonline", "jpasqldboffline"]
+variable "vmnics" {
+    type    = list
+    default = ["jpanic1", "jpanic2", "jpanic3"]
 }
 
